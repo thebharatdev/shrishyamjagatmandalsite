@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+:root {
+  --deep-blue: #0b1a33;
+  --navy: #122b4a;
+  --gold: #d4af37;
+  --gold-light: #f5e7a3;
+  --saffron: #f4a300;
+  --cream: #fef9ed;
+  --white: #ffffff;
+  --soft-orange: #f28c28;
+
+  --chandan: #f5e6c8;
+  --chandan-light: #faf0dc;
+  --chandan-deep: #e8d5a8;
+  --parchment: #f8f1e0;
+  --warm-ivory: #fdf8ed;
+  --warm-clay: #e6d4b3;
+  --dark-brown: #3d2f14;
+  --brown-mid: #6b5426;
+  --brown-soft: #8a6f38;
+}
+
+body {
+  font-family: 'Noto Sans Devanagari', sans-serif;
+  background-color: var(--deep-blue);
+  color: var(--white);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+}
+
+h1, h2, h3, h4, .font-dev-serif {
+  font-family: 'Noto Serif Devanagari', serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--deep-blue); }
+::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  border-radius: 10px;
+}
+
+/* Falling flower animations */
+@keyframes flowerFall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  100% {
+    transform: translateY(calc(100vh + 100px)) rotate(360deg);
+  }
+}
+
+.flower-anim {
+  animation-name: flowerFall;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+/* Ticker */
+@keyframes tickerMove {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-ticker {
+  animation: tickerMove 30s linear infinite;
+}
+
+/* Float animation */
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: floatY 6s ease-in-out infinite;
+}
+
+/* Glow text */
+@keyframes glowGold {
+  0% { text-shadow: 0 0 10px rgba(212, 175, 55, 0.3); }
+  100% { text-shadow: 0 0 30px rgba(212, 175, 55, 0.9), 0 0 50px rgba(212, 175, 55, 0.5); }
+}
+
+.animate-glow {
+  animation: glowGold 3s infinite alternate;
+}
+
+/* Pulse gold */
+@keyframes pulseGold {
+  0% { opacity: 0.4; transform: scale(0.95); }
+  50% { opacity: 1; transform: scale(1.05); }
+  100% { opacity: 0.4; transform: scale(0.95); }
+}
+
+.animate-pulse-gold {
+  animation: pulseGold 2s infinite;
+}
+
+/* Bell ring */
+@keyframes bellRing {
+  0%, 88%, 100% { transform: rotate(0deg); }
+  90%, 94% { transform: rotate(12deg); }
+  92%, 96% { transform: rotate(-12deg); }
+}
+
+.animate-bell {
+  animation: bellRing 4s ease-in-out infinite;
+}
+
+
+@keyframes heartbeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.35);
+  }
+}
+
+.animate-heartbeat {
+  animation: heartbeat 2.5s ease-in-out infinite;
+}
