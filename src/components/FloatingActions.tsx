@@ -4,12 +4,18 @@ interface FloatingActionsProps {
   flowersEnabled: boolean;
   onToggleFlowers: () => void;
   onShowToast: (msg: string) => void;
+  onOpenMala: () => void;
+  onLightDiya: () => void;
+  centerDiyaActive?: boolean;
 }
 
 export const FloatingActions: React.FC<FloatingActionsProps> = ({
   flowersEnabled,
   onToggleFlowers,
-  onShowToast
+  onShowToast,
+  onOpenMala,
+  onLightDiya,
+  centerDiyaActive = false,
 }) => {
   const [showTopBtn, setShowTopBtn] = useState(false);
   const [diyaLit, setDiyaLit] = useState(false);
@@ -27,13 +33,13 @@ export const FloatingActions: React.FC<FloatingActionsProps> = ({
   };
 
   const handleDiyaClick = () => {
-    const nextState = !diyaLit;
-    setDiyaLit(nextState);
-    if (nextState) {
-      onShowToast('🪔 वर्चुअल दीपक प्रज्वलित हुआ! ॥ जय श्री श्याम ॥');
-    } else {
-      onShowToast('दीपक विश्राम में है।');
-    }
+    setDiyaLit(true);
+    onLightDiya();
+    onShowToast('🪔 पावन ज्योति प्रज्वलित! ॥ शुभं करोति कल्याणम् ॥');
+    // Subtle reset of corner state after 3 seconds
+    setTimeout(() => {
+      setDiyaLit(false);
+    }, 3000);
   };
 
   return (
@@ -60,18 +66,35 @@ export const FloatingActions: React.FC<FloatingActionsProps> = ({
           {flowersEnabled ? '🌸' : '🚫'}
         </button> */}
 
+        {/* Mala Jap Counter Floating Button */}
+        <button
+          id="floating-mala-btn"
+          onClick={onOpenMala}
+          className="relative w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-gradient-to-tr from-[#8a5d14] via-[#d4af37] to-[#f5e7a3] text-[#0b1a33] flex items-center justify-center text-xl shadow-[0_0_25px_rgba(212,175,55,0.75)] hover:scale-110 active:scale-95 transition-all cursor-pointer border-2 border-[#fef9ed]/80 group"
+          title="माला जाप काउंटर खोलें (108 मनके)"
+          aria-label="माला जाप काउंटर खोलें"
+        >
+          <span className="text-xl group-hover:rotate-12 transition-transform select-none">📿</span>
+          <span className="absolute -top-1 -right-1 flex h-4 w-4">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#f4a300] opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-4 w-4 bg-[#f4a300] text-[9px] font-bold text-[#0b1a33] items-center justify-center font-dev-serif">
+              108
+            </span>
+          </span>
+        </button>
+
         {/* Diya Button */}
         <button
           onClick={handleDiyaClick}
           className={`w-11 h-11 sm:w-12 sm:h-12 rounded-full flex items-center justify-center text-xl shadow-2xl transition-all cursor-pointer active:scale-95 ${
-            diyaLit
-              ? 'bg-[#f5e7a3] text-[#b8860b] scale-110 shadow-[0_0_30px_rgba(244,163,0,0.9)]'
-              : 'bg-[#f4a300] text-[#0b1a33] hover:scale-110'
+            diyaLit || centerDiyaActive
+              ? 'bg-[#f5e7a3] text-[#b8860b] scale-110 shadow-[0_0_35px_rgba(244,163,0,1)] ring-4 ring-[#f4a300]/50'
+              : 'bg-[#f4a300] text-[#0b1a33] hover:scale-110 hover:shadow-[0_0_20px_rgba(244,163,0,0.8)]'
           }`}
           title="वर्चुअल दीपक जलाएँ"
           aria-label="वर्चुअल दीपक जलाएँ"
         >
-          {diyaLit ? '🪔' : <i className="fas fa-fire"></i>}
+          {diyaLit || centerDiyaActive ? '🪔' : <i className="fas fa-fire"></i>}
         </button>
 
         {/* Scroll To Top */}

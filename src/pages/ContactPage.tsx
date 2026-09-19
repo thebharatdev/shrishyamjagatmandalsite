@@ -87,49 +87,29 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onShowToast }) => {
             </p>
           </div>
 
-          {/* 4 Contact Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
-            {/* <div className="p-6 rounded-3xl bg-white/75 border border-[#b8860b]/30 text-center shadow-md hover:-translate-y-1 transition-transform">
-              <div className="w-12 h-12 mx-auto rounded-full bg-[#b8860b]/15 text-[#b8860b] flex items-center justify-center text-xl mb-3">
-                <i className="fas fa-map-marker-alt"></i>
-              </div>
-              <h4 className="font-dev-serif text-base font-bold text-[#6b5426] mb-1">हमारा पता</h4>
-              <p className="text-xs sm:text-sm text-[#7a6538] leading-relaxed">
-                श्री श्याम मंदिर, सेक्टर १२, नई दिल्ली, भारत - ११०००१
-              </p>
-            </div> */}
-
-            <div className="p-6 rounded-3xl bg-white/75 border border-[#b8860b]/30 text-center shadow-md hover:-translate-y-1 transition-transform">
-              <div className="w-12 h-12 mx-auto rounded-full bg-[#b8860b]/15 text-[#b8860b] flex items-center justify-center text-xl mb-3">
+          {/* Contact Cards - Centered */}
+          <div className="flex flex-wrap justify-center items-stretch gap-6 max-w-2xl mx-auto mb-12">
+            <div className="w-full sm:w-[280px] p-6 rounded-3xl bg-white/85 border border-[#b8860b]/35 text-center shadow-lg hover:-translate-y-1 transition-all duration-300">
+              <div className="w-14 h-14 mx-auto rounded-full bg-[#b8860b]/15 text-[#b8860b] flex items-center justify-center text-2xl mb-3 shadow-inner">
                 <i className="fas fa-phone-alt"></i>
               </div>
-              <h4 className="font-dev-serif text-base font-bold text-[#6b5426] mb-1">फ़ोन</h4>
-              <p className="text-xs sm:text-sm text-[#7a6538]">
-                <a href="tel:+919992211805" className="hover:text-[#b8860b] font-medium">+91 9992211805</a>
+              <h4 className="font-dev-serif text-lg font-bold text-[#6b5426] mb-1">फ़ोन</h4>
+              <p className="text-sm text-[#7a6538]">
+                <a href="tel:+919992211805" className="hover:text-[#b8860b] font-semibold text-base transition-colors">+91 9992211805</a>
               </p>
-              {/* <p className="text-xs sm:text-sm text-[#7a6538]">
-                <a href="tel:+919992211805" className="hover:text-[#b8860b] font-medium">+९१ ९८१२३ ४५६७८</a>
-              </p> */}
+              <p className="text-xs text-[#8a6f38] mt-1">सोम - रवि (सदा उपलब्ध)</p>
             </div>
 
-            <div className="p-6 rounded-3xl bg-white/75 border border-[#b8860b]/30 text-center shadow-md hover:-translate-y-1 transition-transform">
-              <div className="w-12 h-12 mx-auto rounded-full bg-[#b8860b]/15 text-[#b8860b] flex items-center justify-center text-xl mb-3">
+            <div className="w-full sm:w-[320px] p-6 rounded-3xl bg-white/85 border border-[#b8860b]/35 text-center shadow-lg hover:-translate-y-1 transition-all duration-300">
+              <div className="w-14 h-14 mx-auto rounded-full bg-[#b8860b]/15 text-[#b8860b] flex items-center justify-center text-2xl mb-3 shadow-inner">
                 <i className="fas fa-envelope"></i>
               </div>
-              <h4 className="font-dev-serif text-base font-bold text-[#6b5426] mb-1">ईमेल</h4>
-              <p className="text-xs sm:text-sm text-[#7a6538] break-all">
-                <a href="mailto:shrishyamjagatmandal@gmail.com" className="hover:text-[#b8860b] font-medium">shrishyamjagatmandal@gmail.com</a>
+              <h4 className="font-dev-serif text-lg font-bold text-[#6b5426] mb-1">ईमेल</h4>
+              <p className="text-sm text-[#7a6538] break-all">
+                <a href="mailto:shrishyamjagatmandal@gmail.com" className="hover:text-[#b8860b] font-medium transition-colors">shrishyamjagatmandal@gmail.com</a>
               </p>
+              <p className="text-xs text-[#8a6f38] mt-1">आधिकारिक संपर्क</p>
             </div>
-
-            {/* <div className="p-6 rounded-3xl bg-white/75 border border-[#b8860b]/30 text-center shadow-md hover:-translate-y-1 transition-transform">
-              <div className="w-12 h-12 mx-auto rounded-full bg-[#b8860b]/15 text-[#b8860b] flex items-center justify-center text-xl mb-3">
-                <i className="fas fa-clock"></i>
-              </div>
-              <h4 className="font-dev-serif text-base font-bold text-[#6b5426] mb-1">दर्शन समय</h4>
-              <p className="text-xs sm:text-sm text-[#7a6538]">प्रातः ६:०० - १२:००</p>
-              <p className="text-xs sm:text-sm text-[#7a6538]">सायं ४:०० - ९:००</p>
-            </div> */}
           </div>
 
           {/* Form + Info Grid */}

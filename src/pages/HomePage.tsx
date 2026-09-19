@@ -2492,43 +2492,42 @@ export const HomePage: React.FC<HomePageProps> = ({
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
-            <div className="space-y-4 text-[#3d2f14]">
+          <div className="flex justify-center items-center">
+            <div className="max-w-md w-full bg-white/85 border border-[#b8860b]/35 p-8 rounded-3xl shadow-xl text-center space-y-4 text-[#3d2f14]">
+              <div className="w-16 h-16 mx-auto rounded-full bg-[#b8860b]/15 text-[#b8860b] flex items-center justify-center text-2xl shadow-inner">
+                <i className="fas fa-phone-volume"></i>
+              </div>
               <h3 className="font-dev-serif text-2xl text-[#8a6f1f] font-bold">
                 हमसे संपर्क करें
               </h3>
-              <p className="text-base leading-relaxed text-[#6b5426]">
-                कोई प्रश्न हो या सेवा कार्य में सम्मिलित होना चाहते हों, हमें
-                अवश्य संपर्क करें।
+              <p className="text-sm leading-relaxed text-[#6b5426]">
+                कोई प्रश्न हो या सेवा कार्य में सम्मिलित होना चाहते हों, हमें अवश्य संपर्क करें।
               </p>
-              <div className="space-y-3 pt-2">
-                {/* <p className="flex items-center gap-3">
-                  <i className="fas fa-map-marker-alt text-[#b8860b] w-6 text-lg"></i>
-                  <span>श्री श्याम मंदिर, सेक्टर १२, नई दिल्ली - ११०००१</span>
-                </p> */}
-                <p className="flex items-center gap-3">
-                  <i className="fas fa-phone-alt text-[#b8860b] w-6 text-lg"></i>
-                  <a href="tel:+919992211805" className="hover:text-[#b8860b]">
+              <div className="space-y-3 pt-2 text-left sm:text-center inline-block">
+                <p className="flex items-center gap-3 justify-center">
+                  <i className="fas fa-phone-alt text-[#b8860b] text-lg"></i>
+                  <a href="tel:+919992211805" className="hover:text-[#b8860b] font-semibold text-base">
                     +91 9992211805
                   </a>
                 </p>
-                <p className="flex items-center gap-3">
-                  <i className="fas fa-envelope text-[#b8860b] w-6 text-lg"></i>
+                <p className="flex items-center gap-3 justify-center">
+                  <i className="fas fa-envelope text-[#b8860b] text-lg"></i>
                   <a
-                    href="mailto:info@shyamjagatmandal.org"
-                    className="hover:text-[#b8860b]"
+                    href="mailto:shrishyamjagatmandal@gmail.com"
+                    className="hover:text-[#b8860b] text-sm break-all font-medium"
                   >
                     shrishyamjagatmandal@gmail.com
                   </a>
                 </p>
               </div>
 
-              <div className="pt-4 flex gap-3 text-lg">
+              <div className="pt-4 flex justify-center gap-3 text-lg">
                 <a
                   href="https://facebook.com"
                   target="_blank"
                   rel="noreferrer"
-                  className="w-10 h-10 rounded-full bg-white/70 border border-[#b8860b]/30 flex items-center justify-center text-[#8a6f38] hover:text-[#b8860b] hover:scale-110 transition-all"
+                  className="w-10 h-10 rounded-full bg-white border border-[#b8860b]/30 flex items-center justify-center text-[#8a6f38] hover:text-[#b8860b] hover:scale-110 transition-all shadow-sm"
+                  aria-label="Facebook"
                 >
                   <i className="fab fa-facebook-f"></i>
                 </a>
@@ -2536,7 +2535,8 @@ export const HomePage: React.FC<HomePageProps> = ({
                   href="https://instagram.com"
                   target="_blank"
                   rel="noreferrer"
-                  className="w-10 h-10 rounded-full bg-white/70 border border-[#b8860b]/30 flex items-center justify-center text-[#8a6f38] hover:text-[#b8860b] hover:scale-110 transition-all"
+                  className="w-10 h-10 rounded-full bg-white border border-[#b8860b]/30 flex items-center justify-center text-[#8a6f38] hover:text-[#b8860b] hover:scale-110 transition-all shadow-sm"
+                  aria-label="Instagram"
                 >
                   <i className="fab fa-instagram"></i>
                 </a>
@@ -2544,7 +2544,8 @@ export const HomePage: React.FC<HomePageProps> = ({
                   href="https://youtube.com"
                   target="_blank"
                   rel="noreferrer"
-                  className="w-10 h-10 rounded-full bg-white/70 border border-[#b8860b]/30 flex items-center justify-center text-[#8a6f38] hover:text-[#b8860b] hover:scale-110 transition-all"
+                  className="w-10 h-10 rounded-full bg-white border border-[#b8860b]/30 flex items-center justify-center text-[#8a6f38] hover:text-[#b8860b] hover:scale-110 transition-all shadow-sm"
+                  aria-label="YouTube"
                 >
                   <i className="fab fa-youtube"></i>
                 </a>
@@ -2552,7 +2553,8 @@ export const HomePage: React.FC<HomePageProps> = ({
                   href="https://wa.me/919876543210"
                   target="_blank"
                   rel="noreferrer"
-                  className="w-10 h-10 rounded-full bg-white/70 border border-[#25d366]/40 flex items-center justify-center text-[#25d366] hover:scale-110 transition-all"
+                  className="w-10 h-10 rounded-full bg-white border border-[#25d366]/40 flex items-center justify-center text-[#25d366] hover:scale-110 transition-all shadow-sm"
+                  aria-label="WhatsApp"
                 >
                   <i className="fab fa-whatsapp"></i>
                 </a>

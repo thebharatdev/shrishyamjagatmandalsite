@@ -5,6 +5,8 @@ import { Footer } from './components/Footer';
 import { FallingFlowers } from './components/FallingFlowers';
 import { FloatingActions } from './components/FloatingActions';
 import { Toast } from './components/Toast';
+import { MalaModal } from './components/MalaModal';
+import { VirtualDiyaCenter } from './components/VirtualDiyaCenter';
 
 import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
@@ -20,6 +22,49 @@ export default function App() {
   const [flowersEnabled, setFlowersEnabled] = useState(true);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+  const [malaOpen, setMalaOpen] = useState(false);
+  const [centerDiyaVisible, setCenterDiyaVisible] = useState(false);
+
+  // Play subtle sacred bell tone for diya lighting
+  const playDiyaChime = () => {
+    try {
+      const AudioContextClass = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+      if (!AudioContextClass) return;
+      const ctx = new AudioContextClass();
+      if (ctx.state === 'suspended') {
+        ctx.resume();
+      }
+
+      // Layered sacred harmonics
+      const now = ctx.currentTime;
+      [528, 660, 792, 1056].forEach((freq, i) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, now + i * 0.08);
+
+        gain.gain.setValueAtTime(0, now + i * 0.08);
+        gain.gain.linearRampToValueAtTime(0.12 / (i + 1), now + i * 0.08 + 0.04);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + i * 0.08 + 1.8);
+
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now + i * 0.08);
+        osc.stop(now + i * 0.08 + 1.9);
+      });
+    } catch {
+      // AudioContext unavailable or blocked by autoplay
+    }
+  };
+
+  const handleLightCenterDiya = () => {
+    playDiyaChime();
+    setCenterDiyaVisible(true);
+    // User requested: "2 sec wale hide ho jaaye"
+    setTimeout(() => {
+      setCenterDiyaVisible(false);
+    }, 2000);
+  };
 
   // Initial spiritual preloader (Om animation)
   useEffect(() => {
@@ -79,6 +124,7 @@ export default function App() {
         currentPage={currentPage}
         onNavigate={handleNavigate}
         onOpenSearch={() => handleNavigate('bhajans')}
+        onOpenMala={() => setMalaOpen(true)}
       />
 
       {/* 4. MAIN ROUTE CONTENT */}
@@ -119,7 +165,7 @@ export default function App() {
       {/* 5. FOOTER */}
       <Footer onNavigate={handleNavigate} />
 
-      {/* 6. FLOATING ACTIONS (WhatsApp, ScrollTop, Diya, Flowers) */}
+      {/* 6. FLOATING ACTIONS (WhatsApp, ScrollTop, Diya, Flowers, Mala Jap) */}
       <FloatingActions
         flowersEnabled={flowersEnabled}
         onToggleFlowers={() => {
@@ -128,9 +174,22 @@ export default function App() {
           showToast(next ? '🌸 पुष्प वर्षा चालू की गई' : 'पुष्प वर्षा बंद की गई');
         }}
         onShowToast={showToast}
+        onOpenMala={() => setMalaOpen(true)}
+        onLightDiya={handleLightCenterDiya}
+        centerDiyaActive={centerDiyaVisible}
       />
 
-      {/* 7. TOAST NOTIFICATION */}
+      {/* 7. VIRTUAL DIYA CENTER LIGHTING EFFECT (2s auto-hide) */}
+      <VirtualDiyaCenter isVisible={centerDiyaVisible} />
+
+      {/* 8. MALA JAP COUNTER MODAL */}
+      <MalaModal
+        isOpen={malaOpen}
+        onClose={() => setMalaOpen(false)}
+        onShowToast={showToast}
+      />
+
+      {/* 9. TOAST NOTIFICATION */}
       <Toast message={toastMessage} />
     </div>
   );
