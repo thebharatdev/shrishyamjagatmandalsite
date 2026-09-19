@@ -1,0 +1,6 @@
+{
+  "name": "श्री श्याम जगत मंडल",
+  "description": "श्री श्याम जगत मंडल - भक्ति, भजन, आरती, दैनिक दर्शन, आगामी पर्व एवं सेवा कार्यों का डिजिटल मंच",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
